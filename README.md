@@ -1,5 +1,7 @@
 # Mini CRM Application
 
+🔗 **Live Demo**: [https://dev-innovations-assignment.vercel.app/login](https://dev-innovations-assignment.vercel.app/login)
+
 A full-stack Customer Relationship Management (CRM) application built with the MERN stack (MongoDB, Express.js, React.js, Node.js).
 
 ## 🚀 Features
