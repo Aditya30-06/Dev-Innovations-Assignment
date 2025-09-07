@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = "https://dev-innovations-assignment.onrender.com";
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 // Create axios instance
 const api = axios.create({
