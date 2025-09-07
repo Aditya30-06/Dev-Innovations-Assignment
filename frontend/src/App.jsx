@@ -63,7 +63,7 @@ function App() {
               error: {
                 duration: 5000,
                 iconTheme: {
-                  primary: '#ef4444',
+                  primary: '#ef4445',
                   secondary: '#fff',
                 },
               },
