@@ -1,0 +1,78 @@
+const jwt = require('jsonwebtoken');
+const User = require('../models/User');
+
+// Verify JWT token
+const authenticateToken = async (req, res, next) => {
+  try {
+    const authHeader = req.headers.authorization;
+    const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
+
+    if (!token) {
+      return res.status(401).json({
+        success: false,
+        error: 'Access token required'
+      });
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await User.findById(decoded.userId).select('-passwordHash');
+    
+    if (!user) {
+      return res.status(401).json({
+        success: false,
+        error: 'Invalid token - user not found'
+      });
+    }
+
+    req.user = user;
+    next();
+  } catch (error) {
+    if (error.name === 'JsonWebTokenError') {
+      return res.status(401).json({
+        success: false,
+        error: 'Invalid token'
+      });
+    }
+    if (error.name === 'TokenExpiredError') {
+      return res.status(401).json({
+        success: false,
+        error: 'Token expired'
+      });
+    }
+    res.status(500).json({
+      success: false,
+      error: 'Token verification failed'
+    });
+  }
+};
+
+// Check if user is admin
+const requireAdmin = (req, res, next) => {
+  if (req.user.role !== 'admin') {
+    return res.status(403).json({
+      success: false,
+      error: 'Admin access required'
+    });
+  }
+  next();
+};
+
+// Check if user owns resource or is admin
+const requireOwnershipOrAdmin = (req, res, next) => {
+  const resourceOwnerId = req.params.ownerId || req.body.ownerId;
+  
+  if (req.user.role === 'admin' || req.user._id.toString() === resourceOwnerId) {
+    return next();
+  }
+  
+  res.status(403).json({
+    success: false,
+    error: 'Access denied - insufficient permissions'
+  });
+};
+
+module.exports = {
+  authenticateToken,
+  requireAdmin,
+  requireOwnershipOrAdmin
+};

@@ -1,0 +1,211 @@
+/* Navbar */
+.navbar {
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 50;
+  margin-bottom: 24px;
+}
+
+.navbar-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+/* Logo */
+.logo-text {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+/* Desktop nav links */
+.navbar-links {
+  display: none;
+}
+@media (min-width: 640px) {
+  .navbar-links {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #6b7280;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+.nav-link:hover {
+  color: #374151;
+  border-bottom-color: #d1d5db;
+}
+.nav-icon {
+  margin-right: 0.5rem;
+  height: 16px;
+  width: 16px;
+}
+
+/* Profile */
+.profile-section {
+  position: relative;
+  display: none;
+}
+@media (min-width: 640px) {
+  .profile-section {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.profile-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.profile-avatar {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  background: #dbeafe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile-avatar-icon {
+  color: #2563eb;
+  height: 16px;
+  width: 16px;
+}
+
+.profile-dropdown {
+  position: absolute;
+  right: 0;
+  margin-top: 0.5rem;
+  width: 12rem;
+  background: #fff;
+  border-radius: 0.375rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  overflow: hidden;
+}
+
+.profile-info {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+.profile-info .name {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #374151;
+}
+.profile-info .email {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+.profile-info .role {
+  font-size: 0.75rem;
+  color: #2563eb;
+  text-transform: capitalize;
+}
+
+.logout-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  color: #374151;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.logout-btn:hover {
+  background: #f3f4f6;
+}
+.logout-icon {
+  margin-right: 0.5rem;
+  height: 16px;
+  width: 16px;
+}
+
+/* Mobile menu */
+.mobile-menu-btn {
+  display: flex;
+}
+@media (min-width: 640px) {
+  .mobile-menu-btn {
+    display: none;
+  }
+}
+.menu-icon {
+  height: 24px;
+  width: 24px;
+  color: #6b7280;
+}
+
+.mobile-menu {
+  background: #fff;
+  border-top: 1px solid #e5e7eb;
+}
+.mobile-link {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  color: #6b7280;
+  text-decoration: none;
+  border-left: 4px solid transparent;
+}
+.mobile-link:hover {
+  background: #f9fafb;
+  color: #374151;
+  border-left-color: #d1d5db;
+}
+
+.mobile-profile {
+  border-top: 1px solid #e5e7eb;
+  padding: 1rem;
+}
+.mobile-profile .info {
+  margin-left: 0.75rem;
+}
+.mobile-profile .name {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #111827;
+}
+.mobile-profile .email {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+.mobile-profile .role {
+  font-size: 0.75rem;
+  color: #2563eb;
+  text-transform: capitalize;
+}
+
+.mobile-logout-btn {
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: #374151;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+.mobile-logout-btn:hover {
+  background: #f3f4f6;
+}
